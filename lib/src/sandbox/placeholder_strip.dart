@@ -31,24 +31,33 @@ class PlaceholderStrip extends StatelessWidget {
           border: Border.all(color: colors.outlineVariant),
         ),
         alignment: Alignment.center,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.widgets_outlined, color: colors.onSurfaceSecondary),
-            const SizedBox(height: 8),
-            Text(
-              label,
-              style: TextStyle(color: colors.onSurfaceSecondary, fontSize: 13),
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.widgets_outlined, color: colors.onSurfaceSecondary),
+                const SizedBox(height: 8),
+                Text(
+                  label,
+                  style: TextStyle(
+                    color: colors.onSurfaceSecondary,
+                    fontSize: 13,
+                  ),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  '(placeholder — out of scope)',
+                  style: TextStyle(
+                    color: colors.onSurfaceSecondary.withValues(alpha: 0.6),
+                    fontSize: 11,
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: 2),
-            Text(
-              '(placeholder — out of scope)',
-              style: TextStyle(
-                color: colors.onSurfaceSecondary.withValues(alpha: 0.6),
-                fontSize: 11,
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );
